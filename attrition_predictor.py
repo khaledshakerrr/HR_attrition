@@ -3,11 +3,6 @@ import pandas as pd
 import plotly.express as px
 import matplotlib.pyplot as plt
 
-import pickle
-
-# attrition_model = pickle.load(open('Attrition_xgb_model.sav','rb'))
-
-
 
 st.title("HR Attrition Application")
 st.sidebar.header("Sidebar List")
