@@ -1,11 +1,7 @@
 import streamlit as st
 import pandas as pd
-from  ydata_profiling import ProfileReport
 import plotly.express as px
 import matplotlib.pyplot as plt
-import seaborn as sns
-from sklearn.preprocessing import LabelEncoder, MinMaxScaler , StandardScaler
-
 
 import pickle
 
@@ -88,14 +84,29 @@ if sidebar_var == "EDA":
     st.divider()
     st.subheader(":blue[histogram of Age ,Daily Rate and distance from home data with Attrition]",divider="rainbow")
     
-    fig5, ax = plt.subplots(1, 3, figsize=(10, 10))
-    sns.histplot(df, x='Age', hue='Attrition', kde=True, ax=ax[0])
-    sns.histplot(df, x='DailyRate', hue='Attrition', kde=True, ax=ax[1])
-    sns.histplot(df, x='DistanceFromHome', hue='Attrition', kde=True, ax=ax[2])
-    st.pyplot(fig5)
+    # fig5, ax = plt.subplots(1, 3, figsize=(10, 10))
+    # sns.histplot(df, x='Age', hue='Attrition', kde=True, ax=ax[0])
+    # sns.histplot(df, x='DailyRate', hue='Attrition', kde=True, ax=ax[1])
+    # sns.histplot(df, x='DistanceFromHome', hue='Attrition', kde=True, ax=ax[2])
+    # st.pyplot(fig5)
+
+    # Create histograms with KDE using Plotly Express
+
+
+    # Create histograms with KDE using Plotly Express
+    fig = px.histogram(df, x='Age', color='Attrition', nbins=20, title='Age Distribution')
+    fig2 = px.histogram(df, x='DailyRate', color='Attrition', nbins=20, title='DailyRate Distribution')
+    fig3 = px.histogram(df, x='DistanceFromHome', color='Attrition', nbins=20, title='DistanceFromHome Distribution')
+
+    # Display the plots using Streamlit
+    st.plotly_chart(fig)
+    st.plotly_chart(fig2)
+    st.plotly_chart(fig3)
+
+
 
     st.subheader("**1. Age Distribution**")
-    st.markdown("- The leftmost chart displays the distribution of ages.")
+    st.markdown("- The left most chart displays the distribution of ages.")
     st.markdown("""- The orange bars represent one group, while the blue bars represent another
                  (possibly male and female).""")
     st.markdown("- Most individuals fall within the 20-40 age range.")
