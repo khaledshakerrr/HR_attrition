@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 import pickle
 
-attrition_model = pickle.load(open('Attrition_xgb_model.sav','rb'))
+# attrition_model = pickle.load(open('Attrition_xgb_model.sav','rb'))
 
 
 
